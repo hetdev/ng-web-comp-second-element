@@ -15,21 +15,12 @@ import {createCustomElement} from '@angular/elements';
   // bootstrap: [AppComponent],
   entryComponents: [AppComponent]
 })
-// export class AppModule implements DoBootstrap {
-//   constructor(private injector: Injector) {
-//   }
-//
-//   ngDoBootstrap() {
-//     const el = createCustomElement(AppComponent, { injector: this.injector });
-//     customElements.define('ng-web-comp-second-element', el);
-//   }
-// }
-
 export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {
-    const el = createCustomElement(AppComponent, { injector });
-    customElements.define('ng-web-comp-second-element', el);
   }
 
-  ngDoBootstrap() {}
+  ngDoBootstrap() {
+    const el = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('ng-web-comp-second-element', el);
+  }
 }
